@@ -28,10 +28,10 @@ xmlns:tools="http://schemas.android.com/tools" android:layout_height="match_pare
         tools:layout_editor_absoluteY="78dp" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/mostCommonTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Signs and symptoms"
+        android:text="Most common symptoms"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,8 +40,48 @@ xmlns:tools="http://schemas.android.com/tools" android:layout_height="match_pare
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
-        android:layout_below="@+id/textView"
+        android:id="@+id/MostCommonSymptomslistView"
+        android:layout_below="@+id/mostCommonTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/lessCommonTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Less common symptoms"
+        android:layout_below="@+id/MostCommonSymptomslistView"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="424dp" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lessCommonSymptomslistView"
+        android:layout_below="@+id/lessCommonTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
+    <TextView
+        android:id="@+id/seriousSymptomsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Serious symptoms"
+        android:layout_below="@+id/lessCommonSymptomslistView"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="564dp" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/seriousSymptomsTextView"
+        android:id="@+id/seriousSymptomslistView"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
