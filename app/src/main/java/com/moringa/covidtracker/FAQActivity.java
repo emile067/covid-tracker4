@@ -2,9 +2,11 @@ package com.moringa.covidtracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -13,6 +15,7 @@ public class FAQActivity extends AppCompatActivity {
     @BindView(R.id.MostCommonSymptomslistView) ListView mMostCommonSymptomslistView;
     @BindView(R.id.lessCommonSymptomslistView) ListView mLessCommonSymptomslistView;
     @BindView(R.id.seriousSymptomslistView) ListView mSeriousSymptomslistView;
+    @BindView(R.id.preventionListView) ListView mPreventionListView;
     private final String[] mostCommonSymptoms = new String[] {"fever", "dry cough", "tiredness"};
     private final String[] lessCommonSymptoms = new String[] {"aches and pains", "sore throat", "diarrhoea","conjunctivitis","headache","loss of taste or smell","a rash on skin, or discolouration of fingers or toes"};
     private final String[] seriousSymptoms = new String[] {"difficulty breathing or shortness of breath","chest pain or pressure", "loss of speech or movement"};
@@ -30,11 +33,18 @@ public class FAQActivity extends AppCompatActivity {
         setContentView(R.layout.activity_f_a_q);
         ButterKnife.bind(this);
 
+        Intent intent = getIntent();
+        String userName = intent.getStringExtra("userName");
+        String welcomeText= "Welcome to TrackCovid " + userName;
+        Toast.makeText(FAQActivity.this, welcomeText, Toast.LENGTH_LONG).show();
+
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, mostCommonSymptoms);
         mMostCommonSymptomslistView.setAdapter(adapter);
         ArrayAdapter adapter2 = new ArrayAdapter(this, android.R.layout.simple_list_item_1, lessCommonSymptoms);
         mLessCommonSymptomslistView.setAdapter(adapter2);
         ArrayAdapter adapter3 = new ArrayAdapter(this, android.R.layout.simple_list_item_1, seriousSymptoms);
         mSeriousSymptomslistView.setAdapter(adapter3);
+        ArrayAdapter adapter4 = new ArrayAdapter(this, android.R.layout.simple_list_item_1, prevention);
+        mPreventionListView.setAdapter(adapter4);
     }
 }
