@@ -2,7 +2,9 @@ package com.moringa.covidtracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 public class CountryActivity extends AppCompatActivity {
 
@@ -11,7 +13,12 @@ public class CountryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_country);
 
-        getSupportActionBar().setTitle("Activity 3");
+        getSupportActionBar().setTitle("Covid Stats");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Intent intent = getIntent();
+        String userName = intent.getStringExtra("userName");
+        String welcomeText= "Welcome to TrackCovid " + userName;
+        Toast.makeText(CountryActivity.this, welcomeText, Toast.LENGTH_LONG).show();
     }
 }

@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -27,17 +30,17 @@ public class FAQActivity extends AppCompatActivity {
             "Stay home if you feel unwell.",
             "If you have a fever, cough and difficulty breathing, seek medical attention."};
 
+    Intent intent = getIntent();
+    String userName = intent.getStringExtra("userName");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_f_a_q);
         ButterKnife.bind(this);
 
-        getSupportActionBar().setTitle("Activity 2");
+        getSupportActionBar().setTitle("FAQ");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        Intent intent = getIntent();
-        String userName = intent.getStringExtra("userName");
         String welcomeText= "Welcome to TrackCovid " + userName;
         Toast.makeText(FAQActivity.this, welcomeText, Toast.LENGTH_LONG).show();
 
@@ -49,5 +52,25 @@ public class FAQActivity extends AppCompatActivity {
         mSeriousSymptomslistView.setAdapter(adapter3);
         ArrayAdapter adapter4 = new ArrayAdapter(this, android.R.layout.simple_list_item_1, prevention);
         mPreventionListView.setAdapter(adapter4);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_bar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.item1:
+                Intent intent = new Intent(FAQActivity.this, CountryActivity.class);
+                intent.putExtra("userName", userName);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
