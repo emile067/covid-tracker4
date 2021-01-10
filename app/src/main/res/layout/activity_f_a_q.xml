@@ -72,7 +72,45 @@
         <ListView
             android:id="@+id/seriousSymptomslistView"
             android:layout_width="match_parent"
-            android:layout_height="170dp"
+            android:layout_height="195dp"
+            android:divider="@null"
+            android:dividerHeight="0dp" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/sanitizer" />
+
+            <TextView
+                android:id="@+id/imageTextView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stay CLean."
+                android:textColor="@color/white"
+                android:textSize="50sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/preventionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Protect yourself and others around you by knowing the facts and taking appropriate precautions." />
+
+        <ListView
+            android:id="@+id/preventionListView"
+            android:layout_width="match_parent"
+            android:layout_height="195dp"
             android:divider="@null"
             android:dividerHeight="0dp" />
     </LinearLayout>
