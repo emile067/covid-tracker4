@@ -27,7 +27,7 @@ public class FAQActivity extends AppCompatActivity {
         mMostCommonSymptomslistView.setAdapter(adapter);
         ArrayAdapter adapter2 = new ArrayAdapter(this, android.R.layout.simple_list_item_1, lessCommonSymptoms);
         mLessCommonSymptomslistView.setAdapter(adapter2);
-        ArrayAdapter adapter3 = new ArrayAdapter(this, android.R.layout.simple_list_item_1, lessCommonSymptoms);
+        ArrayAdapter adapter3 = new ArrayAdapter(this, android.R.layout.simple_list_item_1, seriousSymptoms);
         mSeriousSymptomslistView.setAdapter(adapter3);
     }
 }
