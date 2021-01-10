@@ -33,6 +33,9 @@ public class FAQActivity extends AppCompatActivity {
         setContentView(R.layout.activity_f_a_q);
         ButterKnife.bind(this);
 
+        getSupportActionBar().setTitle("Activity 2");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Intent intent = getIntent();
         String userName = intent.getStringExtra("userName");
         String welcomeText= "Welcome to TrackCovid " + userName;

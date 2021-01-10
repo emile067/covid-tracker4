@@ -11,5 +11,7 @@ public class CountryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_country);
 
+        getSupportActionBar().setTitle("Activity 3");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }
