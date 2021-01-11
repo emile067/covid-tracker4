@@ -30,10 +30,14 @@ None know so far.
 * [Gradle](https://gradle.org/) - Dependency Management
 * [Java](https://docs.oracle.com/en/java/) - Language used
 
-## Authors
+## Author
 
 * **Kamana Izere Emile** - *Initial work* - [Covid Tracker](https://github.com/emile067/covid-track)
 
+## Contact information
+
+if any issue you'd like to share, contact me on emileizere@gmail.com
+
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License
