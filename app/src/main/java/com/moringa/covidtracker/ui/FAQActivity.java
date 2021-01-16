@@ -1,4 +1,4 @@
-package com.moringa.covidtracker;
+package com.moringa.covidtracker.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.moringa.covidtracker.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

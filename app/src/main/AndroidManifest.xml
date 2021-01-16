@@ -9,12 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CovidTracker">
-        <activity android:name=".FAQActivity"
-            android:parentActivityName=".MainActivity">
+        <activity android:name=".ui.FAQActivity"
+            android:parentActivityName=".ui.MainActivity">
         </activity>
-        <activity android:name=".CountryActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.CountryActivity"
+            android:parentActivityName=".ui.MainActivity"/>
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

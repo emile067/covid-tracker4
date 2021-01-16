@@ -1,10 +1,12 @@
-package com.moringa.covidtracker;
+package com.moringa.covidtracker.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import com.moringa.covidtracker.R;
 
 public class CountryActivity extends AppCompatActivity {
 
