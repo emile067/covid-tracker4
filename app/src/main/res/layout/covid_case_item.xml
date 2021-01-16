@@ -23,7 +23,7 @@
         android:layout_marginRight="78dp"
         android:layout_toStartOf="@+id/recoveredTitleTextView"
         android:layout_toLeftOf="@+id/recoveredTitleTextView"
-        android:text="TextView" />
+        android:text="Cases" />
 
     <TextView
         android:id="@+id/deathsTitleTextView"
@@ -39,7 +39,7 @@
         android:layout_marginRight="43dp"
         android:layout_toEndOf="@+id/recoveredTitleTextView"
         android:layout_toRightOf="@+id/recoveredTitleTextView"
-        android:text="TextView" />
+        android:text="Deaths" />
 
     <TextView
         android:id="@+id/recoveredTitleTextView"
@@ -48,10 +48,10 @@
         android:layout_below="@+id/countryTextView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="TextView" />
+        android:text="Recovered" />
 
     <TextView
-        android:id="@+id/casesTextview"
+        android:id="@+id/casesTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/casesTitleTextView"
@@ -82,13 +82,11 @@
         android:layout_below="@+id/deathsTitleTextView"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
         android:layout_marginStart="71dp"
         android:layout_marginLeft="71dp"
         android:layout_marginTop="14dp"
         android:layout_marginEnd="47dp"
         android:layout_marginRight="47dp"
-        android:layout_marginBottom="633dp"
         android:layout_toEndOf="@+id/recoveredTextView"
         android:layout_toRightOf="@+id/recoveredTextView"
         android:text="TextView" />
