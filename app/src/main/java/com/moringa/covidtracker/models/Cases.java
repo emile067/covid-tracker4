@@ -8,10 +8,10 @@ import com.google.gson.annotations.SerializedName;
 public class Cases implements Serializable
 {
 
-    @SerializedName("Afghanistan")
+    @SerializedName("All")
     @Expose
-    private Afghanistan afghanistan;
-    private final static long serialVersionUID = 8897921132904884361L;
+    private All all;
+    private final static long serialVersionUID = 7915959593811425948L;
 
     /**
      * No args constructor for use in serialization
@@ -22,19 +22,19 @@ public class Cases implements Serializable
 
     /**
      * 
-     * @param afghanistan
+     * @param all
      */
-    public Cases(Afghanistan afghanistan) {
+    public Cases(All all) {
         super();
-        this.afghanistan = afghanistan;
+        this.all = all;
     }
 
-    public Afghanistan getAfghanistan() {
-        return afghanistan;
+    public All getAll() {
+        return all;
     }
 
-    public void setAfghanistan(Afghanistan afghanistan) {
-        this.afghanistan = afghanistan;
+    public void setAll(All all) {
+        this.all = all;
     }
 
 }

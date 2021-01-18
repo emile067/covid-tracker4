@@ -4,15 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringa.covidtracker.R;
-import com.moringa.covidtracker.models.All;
+import com.moringa.covidtracker.models.Cases;
 
 import java.util.List;
 
@@ -21,10 +19,10 @@ import butterknife.ButterKnife;
 
 public class CovidCasesAdapter extends RecyclerView.Adapter<CovidCasesAdapter.CasesViewHolder>{
 
+    private List<Cases> mCases;
     private Context mContext;
-    private List<All> mCases;
 
-    public CovidCasesAdapter(Context mContext, List<All> mCases) {
+    public CovidCasesAdapter(Context mContext, List<Cases> mCases) {
         this.mContext = mContext;
         this.mCases = mCases;
     }
@@ -61,11 +59,11 @@ public class CovidCasesAdapter extends RecyclerView.Adapter<CovidCasesAdapter.Ca
             mContext = itemView.getContext();
         }
 
-        public void bindCases( All mCase){
-            mCountryTextView.setText(mCase.getCountry());
-            mCasesTextView.setText(String.valueOf(mCase.getConfirmed()));
-            mRecoveredTextView.setText(String.valueOf(mCase.getRecovered()));
-            mDeathsTextView.setText(String.valueOf(mCase.getDeaths()));
+        public void bindCases( Cases mCases){
+            mCountryTextView.setText(mCases.getAll().getCountry());
+            mCasesTextView.setText(String.valueOf(mCases.getAll().getConfirmed()));
+            mRecoveredTextView.setText(String.valueOf(mCases.getAll().getRecovered()));
+            mDeathsTextView.setText(String.valueOf(mCases.getAll().getDeaths()));
         }
     }
 }

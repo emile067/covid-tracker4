@@ -31,7 +31,7 @@ public class All implements Serializable
     private String lifeExpectancy;
     @SerializedName("elevation_in_meters")
     @Expose
-    private Object elevationInMeters;
+    private String elevationInMeters;
     @SerializedName("continent")
     @Expose
     private String continent;
@@ -56,7 +56,7 @@ public class All implements Serializable
     @SerializedName("updated")
     @Expose
     private String updated;
-    private final static long serialVersionUID = -4883469693873327135L;
+    private final static long serialVersionUID = -7438183657713845316L;
 
     /**
      * No args constructor for use in serialization
@@ -84,7 +84,7 @@ public class All implements Serializable
      * @param deaths
      * @param lat
      */
-    public All(Integer confirmed, Integer recovered, Integer deaths, String country, Integer population, Integer sqKmArea, String lifeExpectancy, Object elevationInMeters, String continent, String abbreviation, String location, Integer iso, String capitalCity, String lat, String _long, String updated) {
+    public All(Integer confirmed, Integer recovered, Integer deaths, String country, Integer population, Integer sqKmArea, String lifeExpectancy, String elevationInMeters, String continent, String abbreviation, String location, Integer iso, String capitalCity, String lat, String _long, String updated) {
         super();
         this.confirmed = confirmed;
         this.recovered = recovered;
@@ -160,11 +160,11 @@ public class All implements Serializable
         this.lifeExpectancy = lifeExpectancy;
     }
 
-    public Object getElevationInMeters() {
+    public String getElevationInMeters() {
         return elevationInMeters;
     }
 
-    public void setElevationInMeters(Object elevationInMeters) {
+    public void setElevationInMeters(String elevationInMeters) {
         this.elevationInMeters = elevationInMeters;
     }
 

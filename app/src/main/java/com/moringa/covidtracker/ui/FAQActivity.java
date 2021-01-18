@@ -32,8 +32,9 @@ public class FAQActivity extends AppCompatActivity {
             "Stay home if you feel unwell.",
             "If you have a fever, cough and difficulty breathing, seek medical attention."};
 
+
     Intent intent = getIntent();
-    String userName = intent.getStringExtra("userName");
+    String country = intent.getStringExtra("country");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,7 @@ public class FAQActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("FAQ");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        String welcomeText= "Welcome to TrackCovid " + userName;
+        String welcomeText= "Welcome to TrackCovid " + country;
         Toast.makeText(FAQActivity.this, welcomeText, Toast.LENGTH_LONG).show();
 
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, mostCommonSymptoms);
@@ -68,7 +69,7 @@ public class FAQActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.item1:
                 Intent intent = new Intent(FAQActivity.this, CountryActivity.class);
-                intent.putExtra("userName", userName);
+                intent.putExtra("country", country);
                 startActivity(intent);
                 return true;
             default:

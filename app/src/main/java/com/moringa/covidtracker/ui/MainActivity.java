@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.HomepageEnterButton) Button mHomePageEnterButton;
     @BindView(R.id.nameEditText) EditText mNameEditText;
 
+    String country;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,9 +31,10 @@ public class MainActivity extends AppCompatActivity {
         mHomePageEnterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = mNameEditText.getText().toString();
+                country = mNameEditText.getText().toString();
+//                country = toJadenCase(country);
                 Intent intent = new Intent(MainActivity.this, FAQActivity.class);
-                intent.putExtra("userName", name);
+                intent.putExtra("country", country);
                 startActivity(intent);
             }
         });
@@ -48,11 +51,27 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.item1:
+                country = mNameEditText.getText().toString();
                 Intent intent = new Intent(MainActivity.this, CountryActivity.class);
+                intent.putExtra("country", country);
                 startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public String toJadenCase(String phrase) {
+        if(phrase == null || phrase.equals("")) return null;
+
+        char[] array = phrase.toCharArray();
+
+        for(int x = 0; x < array.length; x++) {
+            if(x == 0 || array[x-1] == ' ') {
+                array[x] = Character.toUpperCase(array[x]);
+            }
+        }
+
+        return new String(array);
     }
 }
