@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 country = mNameEditText.getText().toString();
-//                country = toJadenCase(country);
+                country = toJadenCase(country);
                 Intent intent = new Intent(MainActivity.this, FAQActivity.class);
                 intent.putExtra("country", country);
                 startActivity(intent);

@@ -32,15 +32,16 @@ public class FAQActivity extends AppCompatActivity {
             "Stay home if you feel unwell.",
             "If you have a fever, cough and difficulty breathing, seek medical attention."};
 
-
-    Intent intent = getIntent();
-    String country = intent.getStringExtra("country");
+    String country;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_f_a_q);
         ButterKnife.bind(this);
+
+        Intent intent = getIntent();
+        country = intent.getStringExtra("country");
 
         getSupportActionBar().setTitle("FAQ");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
