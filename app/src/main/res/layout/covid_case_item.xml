@@ -7,66 +7,55 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="TextView" />
+        android:text="Country"
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/casesTitleTextView"
-        android:layout_width="77dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
-        android:layout_toStartOf="@+id/recoveredTitleTextView"
-        android:layout_toLeftOf="@+id/recoveredTitleTextView"
+        android:layout_marginStart="55dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="39dp"
         android:text="Cases"
         android:textSize="24sp" />
 
     <TextView
         android:id="@+id/deathsTitleTextView"
-        android:layout_width="79dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="39dp"
-        android:layout_marginLeft="39dp"
-        android:layout_marginTop="38dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_toEndOf="@+id/recoveredTitleTextView"
-        android:layout_toRightOf="@+id/recoveredTitleTextView"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginRight="43dp"
         android:text="Deaths"
-        android:textSize="24sp" />
+        android:textSize="24sp"/>
 
     <TextView
         android:id="@+id/recoveredTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/countryTextView"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="39dp"
         android:text="Recovered"
-        android:textSize="24sp"/>
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/casesTextView"
-        android:layout_width="92dp"
-        android:layout_height="36dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/casesTitleTextView"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginStart="14dp"
-        android:layout_marginLeft="14dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="71dp"
-        android:layout_marginRight="71dp"
-        android:layout_toStartOf="@+id/recoveredTextView"
-        android:layout_toLeftOf="@+id/recoveredTextView"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="18dp"
         android:text="TextView"
         android:textSize="18sp" />
 
@@ -83,19 +72,15 @@
 
     <TextView
         android:id="@+id/deathsTextView"
-        android:layout_width="79dp"
-        android:layout_height="34dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/deathsTitleTextView"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="41dp"
-        android:layout_marginLeft="41dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="49dp"
-        android:layout_marginRight="49dp"
-        android:layout_toEndOf="@+id/recoveredTextView"
-        android:layout_toRightOf="@+id/recoveredTextView"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginRight="47dp"
         android:text="TextView"
         android:textColor="@color/red"
-        android:textSize="18sp" />
+        android:textSize="18sp"/>
 </RelativeLayout>
