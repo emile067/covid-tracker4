@@ -29,7 +29,7 @@
         android:layout_centerInParent="true"
         android:layout_marginBottom="10dp"
         android:background="@color/white"
-        android:hint="Enter your user name"
+        android:hint="Enter the country"
         android:padding="10dp" />
 
     <Button

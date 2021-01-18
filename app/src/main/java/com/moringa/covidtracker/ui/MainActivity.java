@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 country = mNameEditText.getText().toString();
                 country = toJadenCase(country);
-                Intent intent = new Intent(MainActivity.this, FAQActivity.class);
+                Intent intent = new Intent(MainActivity.this,CountryActivity.class);
                 intent.putExtra("country", country);
                 startActivity(intent);
             }
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.item1:
                 country = mNameEditText.getText().toString();
-                Intent intent = new Intent(MainActivity.this, CountryActivity.class);
+                Intent intent = new Intent(MainActivity.this, FAQActivity.class);
                 intent.putExtra("country", country);
                 startActivity(intent);
                 return true;

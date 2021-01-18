@@ -6,6 +6,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +36,8 @@ public class CountryActivity extends AppCompatActivity {
     private Cases mCases;
     private List<Cases> mCasesList = new ArrayList<Cases>();
     private CovidCasesAdapter mCasesAdapter;
+
+    String country;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +82,26 @@ public class CountryActivity extends AppCompatActivity {
                 showUnsuccessfulMessage();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_bar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.item1:
+                Intent intent = new Intent( CountryActivity.this, FAQActivity.class);
+                intent.putExtra("country", country);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void showCases() {
