@@ -43,11 +43,13 @@ public class FAQActivity extends AppCompatActivity {
         Intent intent = getIntent();
         country = intent.getStringExtra("country");
 
+        //setting title of the page
         getSupportActionBar().setTitle("FAQ");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         String welcomeText= "Welcome to TrackCovid " + country;
         Toast.makeText(FAQActivity.this, welcomeText, Toast.LENGTH_LONG).show();
 
+        //creating adapters to pass the arrays onto the the list views
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, mostCommonSymptoms);
         mMostCommonSymptomslistView.setAdapter(adapter);
         ArrayAdapter adapter2 = new ArrayAdapter(this, android.R.layout.simple_list_item_1, lessCommonSymptoms);

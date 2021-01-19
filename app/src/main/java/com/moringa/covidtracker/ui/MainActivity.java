@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        //Onclick listener for the enter button and passing country input to the country activity
         mHomePageEnterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //Create the additional menu with the button
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -47,11 +49,13 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    //Create functions to be performed on the items in the menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.item1:
                 country = mNameEditText.getText().toString();
+                country = toJadenCase(country);
                 Intent intent = new Intent(MainActivity.this, FAQActivity.class);
                 intent.putExtra("country", country);
                 startActivity(intent);
@@ -61,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //For converting to JadenCase which is the form that the api takes for the country input e.g: sierra leone = Sierra Leone
     public String toJadenCase(String phrase) {
         if(phrase == null || phrase.equals("")) return null;
 

@@ -16,6 +16,7 @@ public class CovidClient {
     private static Retrofit retrofit = null;
     private static final String BASE_URL = Constants.COVID_BASE_URL;
 
+    //Define the function for get cases call function
     public static CovidApi getCases(){
         if(retrofit==null){
 //            OkHttpClient okHttpClient = new OkHttpClient.Builder()

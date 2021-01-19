@@ -45,6 +45,7 @@ public class CountryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_country);
         ButterKnife.bind(this);
 
+        //Set title of the activity on the menu bar
         getSupportActionBar().setTitle("Covid Stats");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -53,6 +54,7 @@ public class CountryActivity extends AppCompatActivity {
         String welcomeText= "Welcome to TrackCovid " + country;
         Toast.makeText(CountryActivity.this, welcomeText, Toast.LENGTH_LONG).show();
 
+        //Create call object to use on the api and getting response from the api
         CovidApi client = CovidClient.getCases();
         Call<Cases> call = client.getCases(country);
 
@@ -84,6 +86,7 @@ public class CountryActivity extends AppCompatActivity {
         });
     }
 
+    //creating the additional menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -91,6 +94,7 @@ public class CountryActivity extends AppCompatActivity {
         return true;
     }
 
+    //setting functions for the menu items
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -104,10 +108,12 @@ public class CountryActivity extends AppCompatActivity {
         }
     }
 
+    //function for showing the recycler view
     private void showCases() {
         mCasesRecyclerView.setVisibility(View.VISIBLE);
     }
 
+    //unsuccessful message for when the response fails
     private void showUnsuccessfulMessage() {
         mErrorTextView.setVisibility(View.VISIBLE);
     }
