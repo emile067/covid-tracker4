@@ -4,7 +4,7 @@ Covid Tracker
 
 ## Getting Started
 
-* Fork from [CovidTrack](https://github.com/emile067/covid-track)
+* Fork from [CovidTrack](https://github.com/emile067/covid-tracker2)
 * clone onto your machine using git clone
 
 ### Prerequisites
