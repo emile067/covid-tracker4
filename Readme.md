@@ -15,7 +15,7 @@ Covid Tracker
 
 ### Installing
 
-* Fork from [CovidTrack](https://github.com/emile067/covid-track)
+* Fork from [CovidTrack V2](https://github.com/emile067/covid-tracker2)
 * clone onto your machine using git clone
 * Open in android studio
 * Run on emulator - *Initial emulator* - Pixel 3 API 28
@@ -32,7 +32,7 @@ None know so far.
 
 ## Author
 
-* **Kamana Izere Emile** - *Initial work* - [Covid Tracker](https://github.com/emile067/covid-track)
+* **Kamana Izere Emile** - *Initial work* - [CovidTrack V2](https://github.com/emile067/covid-tracker2)
 
 ## Contact information
 
