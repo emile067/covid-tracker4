@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "483418035271",
+    "project_id": "covid-tracker-576bd",
+    "storage_bucket": "covid-tracker-576bd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:483418035271:android:c7881034625d53b50f0d62",
+        "android_client_info": {
+          "package_name": "com.moringa.covidtracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "483418035271-783q89tdgj4tli34946lbh8v8pr20non.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.moringa.covidtracker",
+            "certificate_hash": "48c64a1401ac99414e2217fcb99ff67e02dcf91f"
+          }
+        },
+        {
+          "client_id": "483418035271-sua9kvjrdn2boojol461826ehed69uvt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_ifsOl4VATxgB5DlQWbqsPQbB-A3P27Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "483418035271-sua9kvjrdn2boojol461826ehed69uvt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
