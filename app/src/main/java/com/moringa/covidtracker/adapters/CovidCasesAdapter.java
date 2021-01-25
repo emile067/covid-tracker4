@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,7 +19,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CovidCasesAdapter extends RecyclerView.Adapter<CovidCasesAdapter.CasesViewHolder>{
+public class CovidCasesAdapter extends RecyclerView.Adapter<CovidCasesAdapter.CasesViewHolder> implements Filterable {
 
     private List<Cases> mCases;
     private Context mContext;
@@ -43,6 +45,11 @@ public class CovidCasesAdapter extends RecyclerView.Adapter<CovidCasesAdapter.Ca
     @Override
     public int getItemCount() {
         return mCases.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return null;
     }
 
     public class CasesViewHolder extends RecyclerView.ViewHolder{

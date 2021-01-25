@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.moringa.covidtracker.R;
 import com.moringa.covidtracker.adapters.CovidCasesAdapter;
 import com.moringa.covidtracker.models.All;
@@ -32,6 +34,9 @@ import retrofit2.Response;
 public class CountryActivity extends AppCompatActivity {
     @BindView(R.id.casesRecyclerView) RecyclerView mCasesRecyclerView;
     @BindView(R.id.errorTextView) TextView mErrorTextView;
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference ref = database.getReference();
 
     private Cases mCases;
     private List<Cases> mCasesList = new ArrayList<Cases>();

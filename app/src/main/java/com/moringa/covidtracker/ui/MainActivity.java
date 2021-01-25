@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.firebase.ui.database.FirebaseListAdapter;
 import com.moringa.covidtracker.R;
 
 import butterknife.BindView;
