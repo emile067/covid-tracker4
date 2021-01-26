@@ -30,7 +30,6 @@ public class NewAccountActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    private ProgressDialog mAuthProgressDialog;
 
     @BindView(R.id.createAccountButton) Button mCreateAccountButton;
     @BindView(R.id.nameEditText) EditText mNameEditText;
@@ -67,11 +66,9 @@ public class NewAccountActivity extends AppCompatActivity {
         boolean validName = isValidName(name);
         boolean validPassword = isValidPassword(password, confirmPassword);
         if (!validEmail || !validName || !validPassword) return;
-        mAuthProgressDialog.show();
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                mAuthProgressDialog.dismiss();
                 if (task.isSuccessful()){
                     Log.d(TAG, "Authentication successful");
                     createFirebaseUserProfile(task.getResult().getUser());
