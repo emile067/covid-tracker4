@@ -61,14 +61,28 @@
             android:textColor="@android:color/black"
             android:textColorHint="@color/purple_500"
             android:textSize="20sp" />
+        <EditText
+            android:id="@+id/confirmPasswordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/white"
+            android:layout_below="@+id/passwordEditText"
+            android:hint="Confirm"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/purple_500"
+            android:textSize="20sp" />
+
         <Button
-            android:id="@+id/createUserButton"
+            android:id="@+id/createAccountButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="@color/white"
             android:padding="10dp"
-            android:text="Create Acount"
+            android:text="Create Account"
             android:textColor="@color/white"
             android:textColorHint="#BF360C"
             android:textSize="18sp" />
