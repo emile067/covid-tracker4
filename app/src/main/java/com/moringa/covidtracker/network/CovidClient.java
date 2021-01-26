@@ -15,6 +15,9 @@ public class CovidClient {
 
     private static Retrofit retrofit = null;
     private static final String BASE_URL = Constants.COVID_BASE_URL;
+    public static final String FIREBASE_QUERY_INDEX = "index";
+    public static final String FIREBASE_CHILD_Email = "email";
+    public static final String FIREBASE_CHILD_Password = "password";
 
     //Define the function for get cases call function
     public static CovidApi getCases(){
