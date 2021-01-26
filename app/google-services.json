@@ -1,20 +1,21 @@
 {
   "project_info": {
-    "project_number": "483418035271",
-    "project_id": "covid-tracker-576bd",
-    "storage_bucket": "covid-tracker-576bd.appspot.com"
+    "project_number": "320840045433",
+    "firebase_url": "https://covid-tracker-cc3f7-default-rtdb.firebaseio.com",
+    "project_id": "covid-tracker-cc3f7",
+    "storage_bucket": "covid-tracker-cc3f7.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:483418035271:android:c7881034625d53b50f0d62",
+        "mobilesdk_app_id": "1:320840045433:android:2c34a76385cdf522dcd5a8",
         "android_client_info": {
           "package_name": "com.moringa.covidtracker"
         }
       },
       "oauth_client": [
         {
-          "client_id": "483418035271-783q89tdgj4tli34946lbh8v8pr20non.apps.googleusercontent.com",
+          "client_id": "320840045433-hrq924ml2e8if1hioq4dmubrifndhd1o.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.moringa.covidtracker",
@@ -22,20 +23,20 @@
           }
         },
         {
-          "client_id": "483418035271-sua9kvjrdn2boojol461826ehed69uvt.apps.googleusercontent.com",
+          "client_id": "320840045433-suobl5r7gprlhrjq5h06do4vdhrmhftg.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA_ifsOl4VATxgB5DlQWbqsPQbB-A3P27Y"
+          "current_key": "AIzaSyCqkeLs9su2Di_nsy5qxIHllvKoeiT4BNA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "483418035271-sua9kvjrdn2boojol461826ehed69uvt.apps.googleusercontent.com",
+              "client_id": "320840045433-suobl5r7gprlhrjq5h06do4vdhrmhftg.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
