@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moringa.covidtracker.R;
@@ -104,15 +105,25 @@ public class CountryActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.item1:
-                Intent intent = new Intent( CountryActivity.this, FAQActivity.class);
+                Intent intent = new Intent(CountryActivity.this, FAQActivity.class);
                 intent.putExtra("country", country);
                 startActivity(intent);
+                return true;
+            case R.id.action_logout:
+                logout();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
+    private void logout() {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(CountryActivity.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
     //function for showing the recycler view
     private void showCases() {
         mCasesRecyclerView.setVisibility(View.VISIBLE);

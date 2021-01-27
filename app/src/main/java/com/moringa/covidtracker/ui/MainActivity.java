@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.firebase.ui.database.FirebaseListAdapter;
+import com.google.firebase.auth.FirebaseAuth;
 import com.moringa.covidtracker.R;
 
 import butterknife.BindView;
@@ -61,6 +62,9 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("country", country);
                 startActivity(intent);
                 return true;
+            case R.id.action_logout:
+                logout();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -79,5 +83,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return new String(array);
+    }
+
+    private void logout() {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 }

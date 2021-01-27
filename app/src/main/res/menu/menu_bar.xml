@@ -6,4 +6,10 @@
         android:id="@+id/item1"
         android:title="FAQs"
         app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_logout"
+        android:title="Logout"
+        android:visible="true"
+        app:showAsAction="never" />
 </menu>
