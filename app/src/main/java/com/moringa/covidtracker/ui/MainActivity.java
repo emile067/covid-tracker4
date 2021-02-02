@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 country = mNameEditText.getText().toString();
                 country = toJadenCase(country);
-                Intent intent = new Intent(MainActivity.this,NewAccountActivity.class);
+                Intent intent = new Intent(MainActivity.this, SavedCountriesListActivity.class);
                 intent.putExtra("country", country);
                 startActivity(intent);
             }

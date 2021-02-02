@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.moringa.covidtracker.Constants;
 import com.moringa.covidtracker.R;
 import com.moringa.covidtracker.adapters.CovidCasesAdapter;
 import com.moringa.covidtracker.models.All;
@@ -23,6 +25,7 @@ import com.moringa.covidtracker.models.Cases;
 import com.moringa.covidtracker.network.CovidApi;
 import com.moringa.covidtracker.network.CovidClient;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +41,9 @@ public class CountryActivity extends AppCompatActivity {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference ref = database.getReference();
+
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
 
     private Cases mCases;
     private List<Cases> mCasesList = new ArrayList<Cases>();
@@ -60,36 +66,9 @@ public class CountryActivity extends AppCompatActivity {
         String welcomeText= "Welcome to TrackCovid " + country;
         Toast.makeText(CountryActivity.this, welcomeText, Toast.LENGTH_LONG).show();
 
-        //Create call object to use on the api and getting response from the api
-        CovidApi client = CovidClient.getCases();
-        Call<Cases> call = client.getCases(country);
-
-        call.enqueue(new Callback<Cases>(){
-
-            @Override
-            public void onResponse(Call<Cases> call, Response<Cases> response) {
-                if (response.isSuccessful()){
-                    All all = response.body().getAll();
-                    mCases = new Cases(all);
-                    mCasesList.add(mCases);
-                    mCasesAdapter = new CovidCasesAdapter(CountryActivity.this, mCasesList);
-                    mCasesRecyclerView.setAdapter(mCasesAdapter);
-                    RecyclerView.LayoutManager layoutManager =
-                            new LinearLayoutManager(CountryActivity.this);
-                    mCasesRecyclerView.setLayoutManager(layoutManager);
-                    mCasesRecyclerView.setHasFixedSize(true);
-
-                    showCases();
-                } else {
-                    showUnsuccessfulMessage();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Cases> call, Throwable t) {
-                showUnsuccessfulMessage();
-            }
-        });
+        if(country != null){
+            getCountryCases(country);
+        }
     }
 
     //creating the additional menu
@@ -127,6 +106,36 @@ public class CountryActivity extends AppCompatActivity {
     //function for showing the recycler view
     private void showCases() {
         mCasesRecyclerView.setVisibility(View.VISIBLE);
+    }
+
+    private void getCountryCases(String country){
+        CovidApi client = CovidClient.getCases();
+        Call<Cases> call = client.getCases(country);
+        call.enqueue(new Callback<Cases>(){
+            @Override
+            public void onResponse(Call<Cases> call, Response<Cases> response){
+                All all = response.body().getAll();
+                mCases = new Cases(all);
+                mCasesList.add(mCases);
+                CountryActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mCasesAdapter = new CovidCasesAdapter(getApplicationContext(), mCasesList);
+                        mCasesRecyclerView.setAdapter(mCasesAdapter);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(CountryActivity.this);
+                        mCasesRecyclerView.setLayoutManager(layoutManager);
+                        mCasesRecyclerView.setHasFixedSize(true);
+
+                        showCases();
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(Call call, Throwable t) {
+                showUnsuccessfulMessage();
+            }
+        });
     }
 
     //unsuccessful message for when the response fails

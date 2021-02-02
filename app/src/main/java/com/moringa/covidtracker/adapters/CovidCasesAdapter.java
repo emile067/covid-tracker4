@@ -19,7 +19,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CovidCasesAdapter extends RecyclerView.Adapter<CovidCasesAdapter.CasesViewHolder> implements Filterable {
+public class CovidCasesAdapter extends RecyclerView.Adapter<CovidCasesAdapter.CasesViewHolder>{
 
     private List<Cases> mCases;
     private Context mContext;
@@ -45,11 +45,6 @@ public class CovidCasesAdapter extends RecyclerView.Adapter<CovidCasesAdapter.Ca
     @Override
     public int getItemCount() {
         return mCases.size();
-    }
-
-    @Override
-    public Filter getFilter() {
-        return null;
     }
 
     public class CasesViewHolder extends RecyclerView.ViewHolder{
