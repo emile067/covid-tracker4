@@ -34,10 +34,7 @@ public class MainActivity extends AppCompatActivity {
         mHomePageEnterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                country = mNameEditText.getText().toString();
-                country = toJadenCase(country);
                 Intent intent = new Intent(MainActivity.this, SavedCountriesListActivity.class);
-                intent.putExtra("country", country);
                 startActivity(intent);
             }
         });

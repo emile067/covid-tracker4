@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.moringa.covidtracker.Constants;
 import com.moringa.covidtracker.R;
+import com.moringa.covidtracker.models.Country;
 import com.moringa.covidtracker.ui.CountryActivity;
 
 import org.parceler.Parcels;
@@ -35,6 +36,10 @@ public class FirebaseCountryViewHolder  extends RecyclerView.ViewHolder implemen
         mView = itemView;
         mContext = itemView.getContext();
         itemView.setOnClickListener(this);
+    }
+
+    public void bindCountry(Country country){
+        nameTextView.setText(country.getName());
     }
 
     @Override

@@ -2,9 +2,12 @@ package com.moringa.covidtracker.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,10 +41,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SavedCountriesListActivity  extends AppCompatActivity{
+    public static final String TAG = SavedCountriesListActivity.class.getSimpleName();
+
     private DatabaseReference mRef;
-    private FirebaseRecyclerAdapter mFirebaseAdapter;
+    private FirebaseCountryListAdapter mFirebaseAdapter;
     private ItemTouchHelper mItemTouchHelper;
     @BindView(R.id.countriesRecyclerView) RecyclerView mRecyclerView;
+    @BindView(R.id.addButton) Button mAddButton;
+    @BindView(R.id.newCountryEditText) TextView mNewCountryEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,30 +59,42 @@ public class SavedCountriesListActivity  extends AppCompatActivity{
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
         mRef = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_COUNTRIES).child(uid);
-        FirebaseRecyclerOptions<String> options =
-                new FirebaseRecyclerOptions.Builder<String>()
-                        .setQuery(mRef, String.class)
-                        .build();
+//        FirebaseRecyclerOptions<Country> options =
+//                new FirebaseRecyclerOptions.Builder<Country>()
+//                        .setQuery(mRef, Country.class)
+//                        .build();
+//
+//        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if(snapshot.exists()){
+//                    Log.d(TAG,"Added value: "+snapshot.getValue());
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//                Log.d(TAG,"Failed to add.");
+//            }
+//        });
 
-        mFirebaseAdapter = new FirebaseRecyclerAdapter<String, FirebaseCountryViewHolder>(options) {
-            @NonNull
+        mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public FirebaseCountryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.country_list_item, parent, false);
-                return new FirebaseCountryViewHolder(view);
+            public void onClick(View v) {
+                String countryName = toJadenCase(mNewCountryEditText.getText().toString());
+                Country country = new Country(countryName);
+                mRef.setValue(country);
             }
+        });
 
-            @Override
-            protected void onBindViewHolder(@NonNull FirebaseCountryViewHolder firebaseCountryViewHolder, int i, @NonNull String s) {
-                firebaseCountryViewHolder.nameTextView.setText(s);
-            }
-        };
-
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mFirebaseAdapter.startListening();
-        mRecyclerView.setAdapter(mFirebaseAdapter);
-        mRecyclerView.setHasFixedSize(true);
+//        mFirebaseAdapter = new FirebaseCountryListAdapter(options,mRef,this);
+//        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        mFirebaseAdapter.startListening();
+//        mRecyclerView.setAdapter(mFirebaseAdapter);
+//        mRecyclerView.setHasFixedSize(true);
     }
+
+    public void addCountry(Country country){}
 
     private void setUpFirebaseAdapter(){
 //        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(mFirebaseAdapter);
@@ -86,21 +105,36 @@ public class SavedCountriesListActivity  extends AppCompatActivity{
     @Override
     protected void onStart() {
         super.onStart();
-        mFirebaseAdapter.startListening();
+//        mFirebaseAdapter.startListening();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        if(mFirebaseAdapter!= null) {
-            mFirebaseAdapter.stopListening();
-        }
+//        if(mFirebaseAdapter!= null) {
+//            mFirebaseAdapter.stopListening();
+//        }
     }
     public void onStartDrag(RecyclerView.ViewHolder viewHolder){
-        mItemTouchHelper.startDrag(viewHolder);
+//        mItemTouchHelper.startDrag(viewHolder);
     }
     //function for showing the recycler view
     private void showCases() {
         mRecyclerView.setVisibility(View.VISIBLE);
+    }
+
+    //For converting to JadenCase which is the form that the api takes for the country input e.g: sierra leone = Sierra Leone
+    public String toJadenCase(String phrase) {
+        if(phrase == null || phrase.equals("")) return null;
+
+        char[] array = phrase.toCharArray();
+
+        for(int x = 0; x < array.length; x++) {
+            if(x == 0 || array[x-1] == ' ') {
+                array[x] = Character.toUpperCase(array[x]);
+            }
+        }
+
+        return new String(array);
     }
 }
