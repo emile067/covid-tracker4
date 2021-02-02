@@ -3,6 +3,8 @@ package com.moringa.covidtracker.models;
 public class Country {
     private String name;
 
+    public Country() { }
+
     public String getName() {
         return name;
     }

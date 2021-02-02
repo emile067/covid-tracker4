@@ -29,20 +29,48 @@ public class FirebaseCountryViewHolder  extends RecyclerView.ViewHolder implemen
     View mView;
     Context mContext;
     public ImageView reorderImageView;
-    public TextView nameTextView = mView.findViewById(R.id.countryTextView);
+    public TextView mCountryTextView;
 
     public FirebaseCountryViewHolder(View itemView){
         super(itemView);
         mView = itemView;
         mContext = itemView.getContext();
         itemView.setOnClickListener(this);
+        mCountryTextView = mView.findViewById(R.id.countryTextView);
     }
 
     public void bindCountry(Country country){
-        nameTextView.setText(country.getName());
+        mCountryTextView.setText(country.getName());
     }
 
     @Override
     public void onClick(View v) {
+        final ArrayList<Country> mCountries = new ArrayList<Country>();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_COUNTRIES);
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Country country = new Country();
+                for (DataSnapshot dss : snapshot.getChildren()){
+                    country.setName(dss.getValue(String.class));
+                    if (mCountryTextView.getText().toString().equals(country.getName())){
+                        break;
+                    }
+                }
+
+                int itemPosition = getLayoutPosition();
+
+                Intent intent = new Intent(mContext, CountryActivity.class);
+                intent.putExtra("position", itemPosition + "");
+                intent.putExtra("country", country.getName());
+
+                mContext.startActivity(intent);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

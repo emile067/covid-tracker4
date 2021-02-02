@@ -50,6 +50,8 @@ public class SavedCountriesListActivity  extends AppCompatActivity{
     @BindView(R.id.addButton) Button mAddButton;
     @BindView(R.id.newCountryEditText) TextView mNewCountryEditText;
 
+    private ArrayList<Country> mCountries = new ArrayList<Country>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,64 +61,66 @@ public class SavedCountriesListActivity  extends AppCompatActivity{
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
         mRef = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_COUNTRIES).child(uid);
-//        FirebaseRecyclerOptions<Country> options =
-//                new FirebaseRecyclerOptions.Builder<Country>()
-//                        .setQuery(mRef, Country.class)
-//                        .build();
-//
-//        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                if(snapshot.exists()){
-//                    Log.d(TAG,"Added value: "+snapshot.getValue());
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//                Log.d(TAG,"Failed to add.");
-//            }
-//        });
+        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    mCountries.clear();
+                for (DataSnapshot dss : snapshot.getChildren()) {
+                    Country country = new Country();
+                    country.setName(dss.getValue(Country.class).getName());
+                    mCountries.add(country);
+                    Log.d("countries updated", "country: " + country.getName()); //log
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d(TAG,"Failed to add.");
+            }
+        });
 
         mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String countryName = toJadenCase(mNewCountryEditText.getText().toString());
                 Country country = new Country(countryName);
-                mRef.setValue(country);
+                mCountries.add(country);
+                mRef.setValue(mCountries);
             }
         });
 
-//        mFirebaseAdapter = new FirebaseCountryListAdapter(options,mRef,this);
-//        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        mFirebaseAdapter.startListening();
-//        mRecyclerView.setAdapter(mFirebaseAdapter);
-//        mRecyclerView.setHasFixedSize(true);
+        setUpFirebaseAdapter();
     }
 
-    public void addCountry(Country country){}
-
     private void setUpFirebaseAdapter(){
-//        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(mFirebaseAdapter);
-//        mItemTouchHelper = new ItemTouchHelper(callback);
-//        mItemTouchHelper.attachToRecyclerView(mRecyclerView);
+        FirebaseRecyclerOptions<Country> options =
+                new FirebaseRecyclerOptions.Builder<Country>()
+                        .setQuery(mRef, Country.class)
+                        .build();
+
+        mFirebaseAdapter = new FirebaseCountryListAdapter(options,mRef,this);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(mFirebaseAdapter);
+        showCases();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-//        mFirebaseAdapter.startListening();
+        mFirebaseAdapter.startListening();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-//        if(mFirebaseAdapter!= null) {
-//            mFirebaseAdapter.stopListening();
-//        }
+        if(mFirebaseAdapter!= null) {
+            mFirebaseAdapter.stopListening();
+        }
     }
     public void onStartDrag(RecyclerView.ViewHolder viewHolder){
-//        mItemTouchHelper.startDrag(viewHolder);
+        mItemTouchHelper.startDrag(viewHolder);
     }
     //function for showing the recycler view
     private void showCases() {
