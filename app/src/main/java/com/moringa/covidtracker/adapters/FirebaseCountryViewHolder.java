@@ -55,11 +55,12 @@ public class FirebaseCountryViewHolder  extends RecyclerView.ViewHolder implemen
                     country.setName(dss.getValue(String.class));
                 }
 
+
                 int itemPosition = getLayoutPosition();
 
                 Intent intent = new Intent(mContext, CountryActivity.class);
                 intent.putExtra("position", itemPosition + "");
-                intent.putExtra("country", country.getName());
+                intent.putExtra("country", mCountryTextView.getText().toString());
 
                 mContext.startActivity(intent);
             }
