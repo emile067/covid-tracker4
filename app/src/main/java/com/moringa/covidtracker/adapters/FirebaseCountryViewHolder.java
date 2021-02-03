@@ -53,9 +53,6 @@ public class FirebaseCountryViewHolder  extends RecyclerView.ViewHolder implemen
                 Country country = new Country();
                 for (DataSnapshot dss : snapshot.getChildren()){
                     country.setName(dss.getValue(String.class));
-                    if (mCountryTextView.getText().toString().equals(country.getName())){
-                        break;
-                    }
                 }
 
                 int itemPosition = getLayoutPosition();
